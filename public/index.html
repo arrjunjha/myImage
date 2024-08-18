@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Image Converter</h1>
+<form action="/convert" method="POST" enctype="multipart/form-data">
+    <input type="file" name="image" accept="image/*" required>
+    <select name="format">
+        <option value="jpg">JPG</option>
+        <option value="png">PNG</option>
+        <option value="tiff">TIFF</option>
+    </select>
+    <label>
+        <input type="checkbox" id="compressCheckbox" name="compress" value="true" onclick="toggleSlider()">
+        Compress Image
+    </label>
+    <div id="sliderContainer" style="display:none;">
+        <label for="sizeSlider">Select Size: <span id="sizeValue">100kb</span></label>
+        <input type="range" id="sizeSlider" name="size" min="10" max="1000" step="10" value="100" oninput="updateSizeValue(this.value)">
+    </div>
+    <button type="submit">Convert and Download</button>
+</form>
+
+
+<script>
+    function toggleSlider() {
+        var checkbox = document.getElementById('compressCheckbox');
+        var sliderContainer = document.getElementById('sliderContainer');
+        sliderContainer.style.display = checkbox.checked ? 'block' : 'none';
+    }
+
+    function updateSizeValue(value) {
+        document.getElementById('sizeValue').innerText = value + 'kb';
+    }
+</script>
+
+</body>
+</html>
