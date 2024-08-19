@@ -7,7 +7,7 @@ const fs = require('fs');
 const app = express();
 const upload = multer({ dest: 'uploads/' });
 
-app.use(express.static('public'));
+app.use(express.static('docs'));
 
 // Route for handling image conversion
 app.post('/convert', upload.single('image'), async (req, res) => {
